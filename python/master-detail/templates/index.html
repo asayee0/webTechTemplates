@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-between">
+
+            {# MASTER #}
+            <div class="col-6">
+                <ul class="list-group">
+                    {% for a in animelist %}
+                    <a href="{{ url_for('details', result=a.name) }}">
+                        <li class="list-group-item">
+                            {{ a.name }}
+                        </li>
+                    </a>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {# DETAIL #}
+            <div class="col-6">
+                {% if anime is defined %}
+                <div class="container">
+                    <div class="card" style="width: 40rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ anime.name }}</h5>
+                            <table class="table table-striped card-text">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Genre</th>
+                                    <th>Type</th>
+                                    <th>Episodes</th>
+                                    <th>Rating</th>
+                                    <th>Members</th>
+                                </tr>
+                                <tr>
+                                    <td>{{ anime.id }}</td>
+                                    <td>{{ anime.name }}</td>
+                                    <td>{{ anime.genre }}</td>
+                                    <td>{{ anime.showType }}</td>
+                                    <td>{{ anime.episodes }}</td>
+                                    <td>{{ anime.rating }}</td>
+                                    <td>{{ anime.members }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="container">
+                    <div class="card" style="width: 40rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Anime</h5>
+                            <table class="table table-striped card-text">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Genre</th>
+                                    <th>Type</th>
+                                    <th>Episodes</th>
+                                    <th>Rating</th>
+                                    <th>Members</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

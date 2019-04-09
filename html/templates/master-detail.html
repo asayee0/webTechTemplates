@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-between">
+
+            <div class="col-6">
+                <ul class="list-group">
+                    {% for u in users %}
+                    <a href="{{ url_for('details', result=u.id) }}">
+                        <li class="list-group-item">
+                            {{ u.name }}
+                        </li>
+                    </a>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="col-6">
+                {% if userDetails is defined %}
+                <div class="container">
+                    <div class="card" style="width: 40rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user.name }}</h5>
+                            <table class="table table-striped card-text">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                </tr>
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.name }}</td>
+                                    <td>{{ user.genre }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="container">
+                    <div class="card" style="width: 40rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">User</h5>
+                            <table class="table table-striped card-text">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
